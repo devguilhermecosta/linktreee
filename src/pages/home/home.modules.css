@@ -1,0 +1,69 @@
+.C-main {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 45px 0 0 0;
+  text-align: center;
+}
+
+.C-main h1 {
+  font-size: 16px;
+  color: #fff;
+}
+
+.C-main > p {
+  color: #fff;
+  font-size: 10px;
+  margin: 15px 0;
+}
+
+.C-links {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.C-links > a {
+  user-select: none;
+  background-color: #fff;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 300;
+  transition: transform 300ms ease;
+}
+
+.C-links > a:hover {
+  transform: scale(1.05);
+}
+
+@media screen and (min-width: 600px) {
+  .C-links > a {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .C-main h1 {
+    font-size: 25px;
+  }
+
+  .C-main > p {
+    font-size: 14px;
+  }
+
+  .C-links {
+    max-width: 600px;
+  }
+
+  .C-links > a {
+    font-size: 14px;
+  }
+}
