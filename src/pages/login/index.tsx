@@ -1,16 +1,30 @@
 import { FormEvent, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Input from '../../components/input'
 import './login.modules.css'
 import { auth } from '../../services/firebaseConnection'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleForm(event: FormEvent) {
     event.preventDefault();
-    alert(`${email} - ${password}`);
+
+    if (email === '' || password === '') {
+      alert('digite um usuário e senha');
+      return
+    }
+
+    signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      navigate('/admin', { replace: true });
+    })
+    .catch(() => {
+      console.log('erro ao fazer login')
+    })
   }
 
   return (
