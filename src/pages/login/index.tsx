@@ -1,5 +1,12 @@
+import './login.modules.css'
+
 export default function Login() {
-  return <div>
-    <h1>Login Page</h1>
-  </div>
+  return (
+    <section className="C-login">
+      <h1>
+        Dev
+        <span className="C-login_logo_span">Link</span>
+      </h1>
+    </section>
+  )
 }

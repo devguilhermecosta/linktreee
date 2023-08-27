@@ -44,6 +44,11 @@
   transform: scale(1.05);
 }
 
+.C-footer {
+  text-align: center;
+  margin: 10px 0;
+}
+
 @media screen and (min-width: 600px) {
   .C-links > a {
     font-size: 12px;
