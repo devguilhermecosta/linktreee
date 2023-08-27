@@ -1,6 +1,7 @@
 .C-login {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -13,9 +14,33 @@
 }
 
 .C-login_logo_span {
-  background: linear-gradient(90deg, #ff8c00, #c9893c);
+  background: linear-gradient(90deg, #fdb255, #ff8c00);
   background-clip: text;
   color: transparent;
   position: relative;
   margin-left: -8px;
+}
+
+.C-login_form {
+  width: 100%;
+  max-width: 578px;
+  padding: 0 10px;
+}
+
+.C-login_button {
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  background-color: #0066ff;
+  transition: background 300ms ease;
+  color: #FFF;
+  text-transform: capitalize;
+}
+
+.C-login_button:hover {
+  background-color: #0554ca;
 }
