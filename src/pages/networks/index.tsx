@@ -1,7 +1,9 @@
+import Header from "../../components/header"
+
 export default function Networks() {
   return (
     <div>
-      <h1>Networks Page</h1>
+      <Header />
     </div>
   )
 }

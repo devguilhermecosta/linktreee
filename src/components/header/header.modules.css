@@ -1,0 +1,29 @@
+.C-header {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.C-header_links {
+  display: flex;
+  gap: 20px;
+}
+
+.C-header_links > a {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.C-header_button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
