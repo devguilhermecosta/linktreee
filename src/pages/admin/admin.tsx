@@ -2,6 +2,7 @@ import Header from '../../components/header';
 import Input from '../../components/input';
 import './admin.modules.css';
 import { useState } from 'react';
+import { FiTrash } from 'react-icons/fi';
 
 export default function Admin() {
   const [ inputName, setInputName ] = useState("");
@@ -54,16 +55,35 @@ export default function Admin() {
           </div>
         </section>
 
-        <section className="C-admin_result">
-          <p>Veja como está ficando</p>
-          <article
-            style={{ color: inputTextColor, backgroundColor: inputBgColor }}
-            >
-            <p>{inputName}</p>
-          </article>
-        </section>
+        {inputName !== '' && (
+          <section className="C-admin_result">
+            <p>Veja como está ficando</p>
+            <article
+              style={{ color: inputTextColor, backgroundColor: inputBgColor }}
+              >
+              <p>{inputName}</p>
+            </article>
+          </section>
+        )}
 
+        <button
+          className="C-admin_form_button"
+          type="submit">
+          Cadastrar
+        </button>
       </form>
+
+      <h1 className="C-my_links_title">Meus links</h1>
+      <section className='C-my_links'>
+        <article
+          className="C-my_links_result"
+          >
+          <p>meu link</p>
+          <button>
+            <FiTrash size={18} color="#fff" />
+          </button>
+        </article>
+      </section>
 
 
     </div>
