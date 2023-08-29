@@ -6,8 +6,8 @@ import { useState } from 'react';
 export default function Admin() {
   const [ inputName, setInputName ] = useState("");
   const [ inputUrl, setInputUrl ] = useState(""); 
-  const [ inputTextColor, setInputTextColor ] = useState("#121212");
-  const [ inputBgColor, setInputBgColor ] = useState("#f1f1f1");
+  const [ inputTextColor, setInputTextColor ] = useState("#f1f1f1");
+  const [ inputBgColor, setInputBgColor ] = useState("#000");
 
   return (
     <div>
