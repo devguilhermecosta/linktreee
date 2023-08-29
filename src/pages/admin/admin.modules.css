@@ -1,0 +1,71 @@
+.C-admin_form {
+  width: 100%;
+  max-width: 578px;
+  margin: 35px auto;
+}
+
+.C-admin_form_div:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.C-admin_form_div > label {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.C-admin_form_colors {
+  display: flex;
+  gap: 25px;
+}
+
+.C-admin_form_colors > div {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin: 0 !important;
+}
+
+.C-admin_form_colors > div > label {
+  font-size: 14px;
+}
+
+.C-admin_form_div > input[type=color] {
+  width: 45px;
+  height: 35px;
+  padding: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.C-admin_result {
+  width: 100%;
+  max-width: 578px;
+  border: 2px solid #212121;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.C-admin_result > p {
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 0 20px 0;
+}
+
+.C-admin_result > article {
+  background-color: red;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 8px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.C-admin_result > article > p {
+  font-size: 14px;
+}
