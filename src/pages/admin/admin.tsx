@@ -96,86 +96,92 @@ export default function Admin() {
   }
 
   return (
-    <div>
+    <>
       <Header />
 
-      <form className="C-admin_form" onSubmit={handleRegister}>
-        <div className="C-admin_form_div">
-          <label>Nome do Link</label>
-          <Input
-            type="text"
-            placeholder="Digite o nome do link..."
-            value={inputName}
-            onChange={(e) => {setInputName(e.target.value)}}
-          />
-        </div>
-
-        <div className="C-admin_form_div">
-          <label>Url do Link</label>
-          <Input
-            type="text"
-            placeholder="Digite a url..."
-            value={inputUrl}
-            onChange={(e) => {setInputUrl(e.target.value)}}
-          />
-        </div>
-
-        <section className="C-admin_form_colors">
+      <section className="C-admin">
+        <form className="C-admin_form" onSubmit={handleRegister}>
           <div className="C-admin_form_div">
-            <label>Cor do Link</label>
+            <label htmlFor="name">Nome do Link</label>
             <Input
-              type="color"
-              value={inputTextColor}
-              onChange={(e) => {setInputTextColor(e.target.value)}}
+              id="name"
+              type="text"
+              placeholder="Digite o nome do link..."
+              value={inputName}
+              onChange={(e) => {setInputName(e.target.value)}}
             />
           </div>
 
           <div className="C-admin_form_div">
-            <label>Cor do Fundo</label>
+            <label htmlFor="url">Url do Link</label>
             <Input
-              type="color"
-              value={inputBgColor}
-              onChange={(e) => {setInputBgColor(e.target.value)}}
+              id="url"
+              type="url"
+              placeholder="Digite a url..."
+              value={inputUrl}
+              onChange={(e) => {setInputUrl(e.target.value)}}
             />
           </div>
-        </section>
 
-        {inputName !== '' && (
-          <section className="C-admin_result">
-            <p>Veja como está ficando</p>
-            <article
-              style={{ color: inputTextColor, backgroundColor: inputBgColor }}
-              >
-              <p>{inputName}</p>
-            </article>
+          <section className="C-admin_form_colors">
+            <div className="C-admin_form_div">
+              <label htmlFor="color">Cor do Link</label>
+              <Input
+                id="color"
+                type="color"
+                value={inputTextColor}
+                onChange={(e) => {setInputTextColor(e.target.value)}}
+              />
+            </div>
+
+            <div className="C-admin_form_div">
+              <label htmlFor="bgcolor">Cor do Fundo</label>
+              <Input
+                id="bgcolor"
+                type="color"
+                value={inputBgColor}
+                onChange={(e) => {setInputBgColor(e.target.value)}}
+              />
+            </div>
           </section>
-        )}
 
-        <button
-          className="C-admin_form_button"
-          type="submit">
-          Cadastrar
-        </button>
-      </form>
+          {inputName !== '' && (
+            <section className="C-admin_result">
+              <p>Veja como está ficando</p>
+              <article
+                style={{ color: inputTextColor, backgroundColor: inputBgColor }}
+                >
+                <p>{inputName}</p>
+              </article>
+            </section>
+          )}
 
-      <h1 className="C-my_links_title">Meus links</h1>
+          <button
+            className="C-admin_form_button"
+            type="submit">
+            Cadastrar
+          </button>
+        </form>
 
-      <section className='C-my_links'>
+        <h1 className="C-my_links_title">Meus links</h1>
 
-        {links.map( (item) => (
-          <article
-            key={item.id}
-            className="C-my_links_result"
-            style={{ color: item.color, backgroundColor: item.bg }}
-          >
-            <p>{item.name}</p>
-            <button onClick={() => {handleDelete(item.id)}}>
-              <FiTrash size={18} color="#fff" />
-            </button>
-          </article>
-        ))}
+        <section className='C-my_links'>
 
+          {links.map( (item) => (
+            <article
+              key={item.id}
+              className="C-my_links_result"
+              style={{ color: item.color, backgroundColor: item.bg }}
+            >
+              <p>{item.name}</p>
+              <button onClick={() => {handleDelete(item.id)}}>
+                <FiTrash size={18} color="#fff" />
+              </button>
+            </article>
+          ))}
+
+        </section>
       </section>
-    </div>
+    </>
   )
 }
