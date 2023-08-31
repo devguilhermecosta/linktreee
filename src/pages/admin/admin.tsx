@@ -1,20 +1,105 @@
 import Header from '../../components/header';
 import Input from '../../components/input';
 import './admin.modules.css';
-import { useState } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import { FiTrash } from 'react-icons/fi';
+import { db } from '../../services/firebaseConnection';
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  orderBy,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore'
+
+
+interface LinkProps {
+  id: string;
+  name: string;
+  url: string;
+  color: string;
+  bg: string;
+  date: string;
+}
 
 export default function Admin() {
   const [ inputName, setInputName ] = useState("");
   const [ inputUrl, setInputUrl ] = useState(""); 
   const [ inputTextColor, setInputTextColor ] = useState("#f1f1f1");
-  const [ inputBgColor, setInputBgColor ] = useState("#000");
+  const [ inputBgColor, setInputBgColor ] = useState("#000000");
+
+  const [links, setLinks] = useState<LinkProps[]>([]);
+
+  
+  useEffect(() => {
+    const linksRef = collection(db, 'links');
+    const queryRef = query(linksRef, orderBy('created', 'desc'));
+
+    const unsub = onSnapshot(queryRef, (snapshot) => {
+      const list = [] as LinkProps[];
+
+      snapshot.forEach((doc) => {
+        list.push({
+          id: doc.id,
+          name: doc.data().name,
+          url: doc.data().url,
+          color: doc.data().color,
+          bg: doc.data().background,
+          date: doc.data().created
+        })
+      })
+
+      setLinks(list);
+
+    });
+
+    return () => {
+      unsub();
+    }
+  
+  }, []);
+
+  function handleRegister(event: FormEvent) {
+    event.preventDefault();
+    
+    if (inputName == '' || inputUrl == '') {
+      alert('informe todos os campos');
+      return;
+    }
+
+    addDoc(collection(db, 'links'), {
+      name: inputName,
+      url: inputUrl,
+      color: inputTextColor,
+      background: inputBgColor,
+      created: new Date(),
+    })
+    .then(() => {
+      setInputName("");
+      setInputUrl("");
+      setInputTextColor("#f1f1f1");
+      setInputBgColor("#000000");
+    })
+    .catch((error: string) => {
+      console.log('erro ao registrar o link: ' + error);
+    })
+  }
+
+  async function handleDelete(id: string) {
+    const confirm = window.confirm('deseja realmente deletar este link?');
+    if (confirm) {
+      const linkRef = doc(db, 'links', id);
+      await deleteDoc(linkRef);
+    }
+  }
 
   return (
     <div>
       <Header />
 
-      <form className="C-admin_form">
+      <form className="C-admin_form" onSubmit={handleRegister}>
         <div className="C-admin_form_div">
           <label>Nome do Link</label>
           <Input
@@ -74,18 +159,23 @@ export default function Admin() {
       </form>
 
       <h1 className="C-my_links_title">Meus links</h1>
+
       <section className='C-my_links'>
-        <article
-          className="C-my_links_result"
+
+        {links.map( (item) => (
+          <article
+            key={item.id}
+            className="C-my_links_result"
+            style={{ color: item.color, backgroundColor: item.bg }}
           >
-          <p>meu link</p>
-          <button>
-            <FiTrash size={18} color="#fff" />
-          </button>
-        </article>
+            <p>{item.name}</p>
+            <button onClick={() => {handleDelete(item.id)}}>
+              <FiTrash size={18} color="#fff" />
+            </button>
+          </article>
+        ))}
+
       </section>
-
-
     </div>
   )
 }

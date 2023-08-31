@@ -99,11 +99,10 @@
 .C-my_links_result {
   width: 100%;
   height: 40px;
+  margin: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: orange;
-  color: #fff;
   padding: 5px;
   border-radius: 8px;
   font-size: 14px;
