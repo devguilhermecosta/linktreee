@@ -1,0 +1,30 @@
+.C-notfound_page {
+  color: #ffffff;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.C-notfound_page h1 {
+  margin-bottom: 10px;
+}
+
+.C-notfound_page h2 {
+  font-size: 28px;
+}
+
+.C-notfound_page p {
+  margin: 10px 0;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.C-notfound_page a {
+  color: #ffffff;
+  background-color: rgba(200, 200, 200, 0.5);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
